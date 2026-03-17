@@ -5,16 +5,16 @@
 [![ChromaDB](https://img.shields.io/badge/Vector%20DB-ChromaDB-orange)](https://www.trychroma.com/)
 [![Status](https://img.shields.io/badge/Project-Active-success)](#)
 
-A lightweight Retrieval‑Augmented Generation (RAG) app that answers questions from **NCERT Class 12 Mathematics** using **local models only**. It runs entirely on your machine with **Ollama** for the LLM and **ChromaDB** as the vector store.
+A lightweight Retrieval‑Augmented Generation (RAG) app that lets you chat with **any set of PDFs** using **local models only**. It runs entirely on your machine with **Ollama** for the LLM and **ChromaDB** as the vector store
 
 ---
 
 ## ✨ Features
 
 - **PDF ingestion**: Automatically reads and chunks all PDFs in the `pdfs/` directory.
-- **Semantic search**: Uses `qwen3-embedding` to create embeddings and ChromaDB to retrieve the most relevant chunks.
-- **Local LLM**: Generates answers with a local `qwen3.5-uncensored` model (configurable) through Ollama, keeping everything private and offline‑friendly.
-- **Interactive CLI**: Clean command‑line chat experience tailored to NCERT maths.
+- **Semantic search**: Uses `qwen3-embedding` to create embeddings and ChromaDB to retrieve the most relevant chunks for a query.
+- **Local LLM**: Generates answers with a local `qwen3.5:9b` (configurable) model through Ollama, keeping everything private and offline‑friendly.
+- **Interactive CLI**: Clean command‑line chat experience over your own documents (textbooks, notes, papers, etc.).
 
 ---
 
@@ -58,7 +58,7 @@ pip install -r requirements.txt
 
 ### 1. Build the index
 
-1. Place your NCERT Class 12 Maths PDFs into the `pdfs/` directory.
+1. Place any PDFs you want to chat with into the `pdfs/` directory (textbooks, research papers, docs, etc.).
 2. Run the indexer:
 
    ```bash
@@ -77,7 +77,7 @@ pip install -r requirements.txt
 python main.py
 ```
 
-Then, ask questions that are covered in the PDFs, and the agent will answer using the most relevant sections it retrieves.
+Ask questions that are answerable from the PDFs you added, and the agent will respond using the most relevant sections it retrieves.
 
 Type `quit` to exit.
 
@@ -101,6 +101,6 @@ All configuration lives in `config.py`. You can tweak:
 ├── rag.py         # PDF ingestion + index builder
 ├── generate.py    # Retrieval + answer generation logic
 ├── config.py      # Configuration settings
-├── pdfs/          # Source NCERT PDFs
+├── pdfs/          # Source PDFs you want to query
 └── chroma_db/     # ChromaDB vector store (git-ignored)
 ```

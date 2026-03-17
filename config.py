@@ -10,7 +10,7 @@ CHUNK_OVERLAP = 50
 
 # models
 EMBED_MODEL = "qwen3-embedding:0.6b"
-LLM_MODEL = "jaahas/qwen3.5-uncensored:4b"
+LLM_MODEL = "qwen3.5:9b"
 
 # vector database
 COLLECTION_NAME = "ncert_math_12_vector"
