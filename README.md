@@ -5,15 +5,15 @@
 [![ChromaDB](https://img.shields.io/badge/Vector%20DB-ChromaDB-orange)](https://www.trychroma.com/)
 [![Status](https://img.shields.io/badge/Project-Active-success)](#)
 
-A lightweight Retrieval‑Augmented Generation (RAG) app that answers questions from **NCERT Class 12 Mathematics** using **local models only**. It runs entirely on your machine with **Ollama** for the LLM and **ChromaDB** as the vector store.[web:154][web:160][web:117][web:50]
+A lightweight Retrieval‑Augmented Generation (RAG) app that answers questions from **NCERT Class 12 Mathematics** using **local models only**. It runs entirely on your machine with **Ollama** for the LLM and **ChromaDB** as the vector store.
 
 ---
 
 ## ✨ Features
 
 - **PDF ingestion**: Automatically reads and chunks all PDFs in the `pdfs/` directory.
-- **Semantic search**: Uses `qwen3-embedding` to create embeddings and ChromaDB to retrieve the most relevant chunks.[web:157][web:164][web:160]
-- **Local LLM**: Generates answers with a local `qwen3.5-uncensored` model (configurable) through Ollama, keeping everything private and offline‑friendly.[web:162][web:161][web:50]
+- **Semantic search**: Uses `qwen3-embedding` to create embeddings and ChromaDB to retrieve the most relevant chunks.
+- **Local LLM**: Generates answers with a local `qwen3.5-uncensored` model (configurable) through Ollama, keeping everything private and offline‑friendly.
 - **Interactive CLI**: Clean command‑line chat experience tailored to NCERT maths.
 
 ---
@@ -21,7 +21,7 @@ A lightweight Retrieval‑Augmented Generation (RAG) app that answers questions 
 ## 📦 Prerequisites
 
 - **Python 3.8+**
-- **[Ollama](https://ollama.com/)** installed and running on your system.[web:50]
+- **[Ollama](https://ollama.com/)** installed and running on your system.
 
 ### Required models
 
@@ -69,7 +69,7 @@ pip install -r requirements.txt
    - Parse the PDFs
    - Chunk the text
    - Generate embeddings
-   - Store everything in the `chroma_db/` directory using ChromaDB.[web:164][web:160][web:117]
+   - Store everything in the `chroma_db/` directory using ChromaDB.
 
 ### 2. Start chatting
 
