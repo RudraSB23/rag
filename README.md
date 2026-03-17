@@ -1,96 +1,106 @@
 # RAG Agent
 
-A Retrieval-Augmented Generation (RAG) application that answers questions based on NCERT Class 12 Mathematics textbooks. It uses local LLMs via Ollama for privacy and offline capability, with ChromaDB for vector storage.
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
+[![Ollama](https://img.shields.io/badge/Ollama-Local%20LLM-green)](https://ollama.com/)
+[![ChromaDB](https://img.shields.io/badge/Vector%20DB-ChromaDB-orange)](https://www.trychroma.com/)
+[![Status](https://img.shields.io/badge/Project-Active-success)](#)
 
-## Features
+A lightweight Retrieval‑Augmented Generation (RAG) app that answers questions from **NCERT Class 12 Mathematics** using **local models only**. It runs entirely on your machine with **Ollama** for the LLM and **ChromaDB** as the vector store.[web:154][web:160][web:117][web:50]
 
-- **PDF Ingestion**: Automatically parses and chunks PDF documents from the `pdfs/` directory.
-- **Vector Search**: Uses `qwen3-embedding` to generate embeddings and ChromaDB for semantic search.
-- **Local LLM**: Generates answers using `qwen3.5-uncensored` (configurable) running locally via Ollama.
-- **Interactive CLI**: Simple command-line interface for chatting with your documents.
+---
 
-## Prerequisites
+## ✨ Features
+
+- **PDF ingestion**: Automatically reads and chunks all PDFs in the `pdfs/` directory.
+- **Semantic search**: Uses `qwen3-embedding` to create embeddings and ChromaDB to retrieve the most relevant chunks.[web:157][web:164][web:160]
+- **Local LLM**: Generates answers with a local `qwen3.5-uncensored` model (configurable) through Ollama, keeping everything private and offline‑friendly.[web:162][web:161][web:50]
+- **Interactive CLI**: Clean command‑line chat experience tailored to NCERT maths.
+
+---
+
+## 📦 Prerequisites
 
 - **Python 3.8+**
-- **[Ollama](https://ollama.com/)**: Must be installed and running.
+- **[Ollama](https://ollama.com/)** installed and running on your system.[web:50]
 
-### Required Models
+### Required models
 
-You need to pull the specific models used in the configuration (or update `config.py` to match your available models):
+Either pull these models or update `config.py` to match your own setup:
 
 ```bash
 ollama pull qwen3-embedding:0.6b
 ollama pull jaahas/qwen3.5-uncensored:4b
 ```
 
-## Installation
+---
 
-1.  Clone the repository:
-    ```bash
-    git clone https://github.com/yourusername/rag-agent.git
-    cd rag-agent
-    ```
-
-2.  Create a virtual environment (optional but recommended):
-    ```bash
-    python -m venv venv
-    # Windows
-    venv\Scripts\activate
-    # macOS/Linux
-    source venv/bin/activate
-    ```
-
-3.  Install dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-## Usage
-
-### 1. Build the Index
-
-First, you need to process the PDFs and store their embeddings in the vector database.
-
-1.  **Add PDFs**: Place your PDF documents into the `pdfs/` directory.
-2.  **Run the Indexer**:
+## 🚀 Installation
 
 ```bash
-python rag.py
+# Clone the repository
+git clone https://github.com/yourusername/rag-agent.git
+cd rag-agent
+
+# (Optional) create and activate a virtualenv
+python -m venv venv
+# Windows
+venv\Scripts\activate
+# macOS/Linux
+source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
 ```
-*This will parse the PDFs, chunk the text, generate embeddings, and save them to the `chroma_db/` directory.*
 
-### 2. Start the Chat
+---
 
-Once the index is built, you can start the interactive chat agent:
+## 🧱 Usage
+
+### 1. Build the index
+
+1. Place your NCERT Class 12 Maths PDFs into the `pdfs/` directory.
+2. Run the indexer:
+
+   ```bash
+   python rag.py
+   ```
+
+   This will:
+   - Parse the PDFs
+   - Chunk the text
+   - Generate embeddings
+   - Store everything in the `chroma_db/` directory using ChromaDB.[web:164][web:160][web:117]
+
+### 2. Start chatting
 
 ```bash
 python main.py
 ```
 
-### 3. Ask Questions
+Then, ask questions that are covered in the PDFs, and the agent will answer using the most relevant sections it retrieves.
 
-The agent will prompt you for input. Ask questions related to the content in the PDFs:
+Type `quit` to exit.
+
+---
+
+## ⚙️ Configuration
+
+All configuration lives in `config.py`. You can tweak:
+
+- **Models**: `EMBED_MODEL`, `LLM_MODEL`
+- **Chunking**: `CHUNK_SIZE`, `CHUNK_OVERLAP`
+- **Paths**: `CONTENT_DIR`, `DB_DIR`
+
+---
+
+## 🗂 Project structure
 
 ```text
-YOU: What is a relation?
-Thinking...
-BOT: A relation R in a set A is a subset of the cartesian product A x A. It represents a relationship between elements of the set.
+.
+├── main.py        # CLI chat entry point
+├── rag.py         # PDF ingestion + index builder
+├── generate.py    # Retrieval + answer generation logic
+├── config.py      # Configuration settings
+├── pdfs/          # Source NCERT PDFs
+└── chroma_db/     # ChromaDB vector store (git-ignored)
 ```
-
-Type `quit` to exit the application.
-
-## Configuration
-
-You can modify `config.py` to change:
--   **Models**: `EMBED_MODEL` and `LLM_MODEL`.
--   **Chunking**: `CHUNK_SIZE` and `CHUNK_OVERLAP`.
--   **Paths**: `CONTENT_DIR` and `DB_DIR`.
-
-## Project Structure
-
--   `main.py`: Entry point for the chat interface.
--   `rag.py`: Script to ingest PDFs and build the vector database.
--   `generate.py`: Logic for searching and generating answers.
--   `config.py`: Configuration settings.
--   `pdfs/`: Directory containing source PDF documents.
--   `chroma_db/`: Directory where the vector database is stored (ignored in git).
