@@ -36,5 +36,7 @@ env/
 
 # Project Specific
 chroma_db/
+pdfs/*
+!pdfs/.gitkeep
 .env
 *.log

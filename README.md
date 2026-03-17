@@ -49,7 +49,10 @@ ollama pull jaahas/qwen3.5-uncensored:4b
 
 ### 1. Build the Index
 
-First, you need to process the PDFs and store their embeddings in the vector database. The repository comes with NCERT Math 12 PDFs in the `pdfs/` directory.
+First, you need to process the PDFs and store their embeddings in the vector database.
+
+1.  **Add PDFs**: Place your PDF documents into the `pdfs/` directory.
+2.  **Run the Indexer**:
 
 ```bash
 python rag.py
