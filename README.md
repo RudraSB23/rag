@@ -38,8 +38,8 @@ ollama pull jaahas/qwen3.5-uncensored:4b
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/rag-agent.git
-cd rag-agent
+git clone https://github.com/RudraSB23/rag.git
+cd rag
 
 # (Optional) create and activate a virtualenv
 python -m venv venv
